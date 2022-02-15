@@ -13,14 +13,14 @@ class StaffList extends Component {
     }
 
     onStaffSelect(staff) {
-        this.setState({selectedStaff: staff});
+        this.setState({ selectedStaff: staff });
     }
 
     renderStaff(staff) {
         if (staff != null) {
-            return(
-                <div style={{margin: "auto"}} className="col-lg-4 col-md-6 col-sm-12">
-                <Card>
+            return (
+                <div style={{ margin: "auto" }} className="col-lg-4 col-md-6 col-sm-12">
+                    <Card>
                         <h4>Họ và tên : {staff.name}</h4>
                         <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
                         <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
@@ -28,12 +28,12 @@ class StaffList extends Component {
                         <li>Chức danh : {staff.role}</li>
                         <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
                         <li>Số ngày đã làm thêm : {staff.overTime}</li>
-                </Card>
+                    </Card>
                 </div>
             );
         }
         else {
-            return(
+            return (
                 <div></div>
             );
         }
@@ -53,13 +53,13 @@ class StaffList extends Component {
 
         return (
             <div className="container-fluid">
+                <h4>Bấm vào tên nhân viên để xem thông tin :</h4>
                 <div className="row mt-1">
-                        {list}
+                    {list}
                 </div>
                 <div className="row">
                     {this.renderStaff(this.state.selectedStaff)}
                 </div>
-                <p>Bấm vào tên nhân viên để xem thông tin</p>
             </div>
         );
 
