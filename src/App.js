@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import StaffList from './components/StaffListComponent';
 import './App.css';
-import { STAFFS } from './shared/staffs';
+import { DEPARTMENTS, ROLE, STAFFS } from './shared/staffs';
 // import { Component } from 'react/cjs/react.development';
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
      super(props);
 
      this.state = {
-       staffs: STAFFS
+       staffs: STAFFS,
      };
    }
 

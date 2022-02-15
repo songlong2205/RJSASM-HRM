@@ -24,8 +24,8 @@ class StaffList extends Component {
                         <h4>Họ và tên : {staff.name}</h4>
                         <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
                         <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
-                        <li>Phòng ban : {staff.name}</li>
-                        <li>Chức danh : {staff.name}</li>
+                        <li>Phòng ban : {staff.department.name}</li>
+                        <li>Chức danh : {staff.role}</li>
                         <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
                         <li>Số ngày đã làm thêm : {staff.overTime}</li>
                 </Card>
