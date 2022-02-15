@@ -21,18 +21,13 @@ class StaffList extends Component {
             return(
                 <div style={{margin: "auto"}} className="col-lg-4 col-md-6 col-sm-12">
                 <Card>
-                    {/* <CardImg width="50%" src={staff.image} alt={staff.name} /> */}
-                    
-                        <p>Họ và tên : {staff.name}</p>
-                        <p>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
-                        <p>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>
-                        <p>Phòng ban : {staff.name}</p>
-                        <p>Chức danh : {staff.name}</p>
-                        
-                        {/* <p>{staff.annualLeave}</p> */}
-                        {/* <CardTitle>{staff.name}</CardTitle>
-                        <CardText>{staff.annualLeave}</CardText> */}
-                    
+                        <h4>Họ và tên : {staff.name}</h4>
+                        <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
+                        <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
+                        <li>Phòng ban : {staff.name}</li>
+                        <li>Chức danh : {staff.name}</li>
+                        <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
+                        <li>Số ngày đã làm thêm : {staff.overTime}</li>
                 </Card>
                 </div>
             );
@@ -49,13 +44,8 @@ class StaffList extends Component {
         const list = this.props.staffs.map((staff) => {
             return (
                 <div key={staff.id} className="col-lg-4 col-md-6 col-sm-12">
-                    {/* <p onClick={() => this.onStaffSelect(staff)} style={{border : '1px solid grey'}}>{staff.name}</p> */}
                     <Card onClick={() => this.onStaffSelect(staff)}>
-                    <p>{staff.name}</p>
-                        {/* <CardImg src={staff.image} alt={staff.name} /> */}
-                        {/* <CardImgOverlay>
-                                <CardTitle>{staff.name}</CardTitle>
-                        </CardImgOverlay> */}
+                        <p>{staff.name}</p>
                     </Card>
                 </div>
             );
