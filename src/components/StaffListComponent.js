@@ -43,9 +43,10 @@ class StaffList extends Component {
 
         const list = this.props.staffs.map((staff) => {
             return (
-                <div key={staff.id} className="col-lg-4 col-md-6 col-sm-12">
+                <div key={staff.id} className="col-lg-2 col-md-4 col-6 col-sm-6">
                     <Card onClick={() => this.onStaffSelect(staff)}>
-                        <p>{staff.name}</p>
+                        <CardImg src={staff.image} />
+                        <p style={{textAlign: "center"}}>{staff.name}</p>
                     </Card>
                 </div>
             );
