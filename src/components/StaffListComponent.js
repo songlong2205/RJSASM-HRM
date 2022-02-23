@@ -21,6 +21,7 @@ class StaffList extends Component {
             return (
                 <div style={{ margin: "auto" }} className="col-lg-4 col-md-6 col-sm-12">
                     <Card>
+                        <CardImg src={staff.image} />   
                         <h4>Họ và tên : {staff.name}</h4>
                         <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
                         <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
