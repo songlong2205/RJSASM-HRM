@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import StaffList from './StaffListComponent';
 import StaffInfo from './StaffInfoComponent';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 import '../App.css';
 import { STAFFS } from '../shared/staffs';
 
@@ -23,15 +24,12 @@ class Main extends Component {
     render() {
         return (
             <div className="App">
-                <Navbar dark color="primary">
-                    <div className='container-fluid'>
-                        <NavbarBrand href='/'>Ứng dụng quản lý nhân sự v1.0 </NavbarBrand>
-                    </div>
-                </Navbar>
+                <Header />
                 <StaffList staffs={this.state.staffs}
                     onClick={(staffId) => this.onStaffSelect(staffId)} />
                 <StaffInfo
-                    staff={this.state.staffs.filter((staff) => staff.id === this.state.selectedStaff )[0]} />
+                    staff={this.state.staffs.filter((staff) => staff.id === this.state.selectedStaff)[0]} />
+                <Footer />
             </div>
         );
     }

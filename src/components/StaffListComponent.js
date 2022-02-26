@@ -23,6 +23,7 @@ const StaffList = (props) => {
     return (
         <div className="container-fluid">
             <h4>Bấm vào tên nhân viên để xem thông tin :</h4>
+            <hr />
             <div className="row mt-1">
                 {list}
             </div>
