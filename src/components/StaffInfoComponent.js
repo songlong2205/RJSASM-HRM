@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import dateFormat from "dateformat";
 
-class StaffInfo extends Component {
 
-    renderStaff(staff) {
+    function RenderStaff({staff}) {
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -27,12 +26,12 @@ class StaffInfo extends Component {
         );
     }
 
-    render() {
-        if (this.props.staff != null) {
+    const StaffInfo = (props) => {
+        if (props.staff != null) {
             return (
                 <div className="container-fluid">
                     <div className="row">
-                        {this.renderStaff(this.props.staff)}
+                        <RenderStaff staff={props.staff} />
                     </div>
                 </div>
             );
@@ -43,6 +42,6 @@ class StaffInfo extends Component {
             );
         }
     }
-}
+
 
 export default StaffInfo;
