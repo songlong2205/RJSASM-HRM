@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import dateFormat from "dateformat";
-import StaffInfo from './StaffInfoComponent'
 
 class StaffList extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            selectedStaff: null
-        }
-    }
-
-    onStaffSelect(staff) {
-        this.setState({ selectedStaff: staff });
     }
 
     // renderStaff(staff) {
@@ -46,7 +38,7 @@ class StaffList extends Component {
         const list = this.props.staffs.map((staff) => {
             return (
                 <div key={staff.id} className="col-lg-2 col-md-4 col-6 col-sm-6">
-                    <Card onClick={() => this.onStaffSelect(staff)}>
+                    <Card onClick={() => this.props.onClick(staff.id)}>
                         <CardImg src={staff.image} />
                         <p style={{ textAlign: "center" }}>{staff.name}</p>
                     </Card>
@@ -60,7 +52,7 @@ class StaffList extends Component {
                 <div className="row mt-1">
                     {list}
                 </div>
-                <StaffInfo staff={this.state.selectedStaff} />
+                {/* <StaffInfo staff={this.state.selectedStaff} /> */}
                 {/* <div className="row">
                     {this.renderStaff(this.state.selectedStaff)}
                 </div> */}

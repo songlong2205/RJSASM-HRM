@@ -8,12 +8,12 @@ class StaffInfo extends Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div style={{ margin: "auto" }} className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="col-lg-3 col-md-6 col-sm-12">
                         <Card>
                             <CardImg src={staff.image} />
                         </Card>
                     </div>
-                    <div className="col-lg-9 col-md-6 col-sm-12">
+                    <div style={{ margin: "auto" }} className="col-lg-9 col-md-6 col-sm-12">
                         <h4>Họ và tên : {staff.name}</h4>
                         <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
                         <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
