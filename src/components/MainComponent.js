@@ -6,6 +6,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import '../App.css';
 import { STAFFS } from '../shared/staffs';
+import { DEPARTMENTS } from '../shared/staffs';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
@@ -15,6 +16,7 @@ class Main extends Component {
 
         this.state = {
             staffs: STAFFS,
+            departments: DEPARTMENTS,
             // selectedStaff: null
         };
     }
@@ -25,18 +27,27 @@ class Main extends Component {
 
     render() {
 
-        const HomePage = () => {
+        // const HomePage = () => {
+        //     return(
+        //         <Home />
+        //     );
+        // }
+
+        const StaffWithId = ({match}) => {
             return(
-                <Home />
+                <StaffInfo staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId,10))[0]}
+                />
             );
         }
+
         return (
             <div>
                 <Header />
                 <Switch>
-                    <Route path="/home" component={HomePage} />
+                    {/* <Route path="/home" component={HomePage} /> */}
                     <Route exact path="/stafflist" component={() => <StaffList staffs={this.state.staffs} />} /> 
-                    <Redirect to="/home" />
+                    <Route path="/stafflist/:staffId" component={StaffWithId} />
+                    <Redirect to="/stafflist" />
                 </Switch>
                 {/* <StaffList staffs={this.state.staffs}
                     onClick={(staffId) => this.onStaffSelect(staffId)} /> */}
