@@ -22,31 +22,33 @@ class Header extends Component {
         return (
             <>
                 <Navbar dark expand="md">
-                    <div className='container'>
-                        <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand className="mr-auto" href='/'>
-                            <img src="assets/images/alberto.png" height="30" width="41"
-                                alt="Logo" />
-                        </NavbarBrand>
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
-                                <NavItem>
-                                    <NavLink className="nav-Link" to="/stafflist">
-                                        <span className="fa fa-users"></span>Nhân Viên
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-Link" to="/home">
-                                        <span className="fa fa-address-card-o"></span>Phòng ban
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-Link" to="/aboutus">
-                                        <span className="fa fa-money"></span>Bảng lương
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
+                    <div className='container-fluid'>
+                        <div className="row">
+                            <NavbarToggler onClick={this.toggleNav} />
+                            <NavbarBrand className="mr-auto" href='/'>
+                                <img src="assets/images/alberto.png" height="30" width="41"
+                                    alt="Logo" />
+                            </NavbarBrand>
+                            <Collapse isOpen={this.state.isNavOpen} navbar>
+                                <Nav >
+                                    <NavItem className="m-2">
+                                        <NavLink className="nav-Link" to="/stafflist">
+                                            <span className="fa fa-users fa-lg"> Nhân Viên</span>
+                                        </NavLink>
+                                    </NavItem>
+                                    <NavItem className="m-2">
+                                        <NavLink className="nav-Link" to="/departments">
+                                            <span className="fa fa-address-card-o fa-lg">  Phòng ban</span>
+                                        </NavLink>
+                                    </NavItem>
+                                    <NavItem className="m-2">
+                                        <NavLink className="nav-Link" to="/salary">
+                                            <span className="fa fa-money fa-lg">  Bảng lương</span>
+                                        </NavLink>
+                                    </NavItem>
+                                </Nav>
+                            </Collapse>
+                        </div>
                     </div>
                 </Navbar>
             </>

@@ -8,7 +8,7 @@ function RenderStaffInfo({ staff, onClick }) {
         <Card>
             <Link to={`/stafflist/${staff.id}`}>
                 <CardImg src={staff.image} />
-                <p style={{ textAlign: "center" }}>{staff.name}</p>
+                <p style={{ textAlign: "center", color: "black" }}>{staff.name}</p>
             </Link>
         </Card>
     );
@@ -47,9 +47,5 @@ const StaffList = (props) => {
         </div>
     );
 }
-
-
-
-
 
 export default StaffList;

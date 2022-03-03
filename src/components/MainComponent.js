@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
+import DeptList from './DeptCompoent';
 import StaffList from './StaffListComponent';
 import StaffInfo from './StaffInfoComponent';
 import Header from './HeaderComponent';
@@ -27,15 +28,15 @@ class Main extends Component {
 
     render() {
 
-        // const HomePage = () => {
-        //     return(
-        //         <Home />
-        //     );
-        // }
+        const Department = () => {
+            return (
+                <DeptList departments={this.state.departments} />
+            );
+        }
 
-        const StaffWithId = ({match}) => {
-            return(
-                <StaffInfo staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId,10))[0]}
+        const StaffWithId = ({ match }) => {
+            return (
+                <StaffInfo staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))[0]}
                 />
             );
         }
@@ -44,8 +45,8 @@ class Main extends Component {
             <div>
                 <Header />
                 <Switch>
-                    {/* <Route path="/home" component={HomePage} /> */}
-                    <Route exact path="/stafflist" component={() => <StaffList staffs={this.state.staffs} />} /> 
+                    <Route path="/departments" component={Department} />
+                    <Route exact path="/stafflist" component={() => <StaffList staffs={this.state.staffs} />} />
                     <Route path="/stafflist/:staffId" component={StaffWithId} />
                     <Redirect to="/stafflist" />
                 </Switch>

@@ -32,5 +32,8 @@ address{
 }
 
 .navbar-dark {
-    background-color: #512DA8;
+    background-color: blue;
+}
+span {
+    color: lightgray;
 }
