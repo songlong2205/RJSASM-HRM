@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function RenderStaff({ staff }) {
     return (
-        <div className="container-fluid">
+        <div className="container m-2">
             <div className="row">
                 <div className="col-lg-3 col-md-4 col-sm-12">
                     <Card>
@@ -35,10 +35,6 @@ const StaffInfo = (props) => {
                         <BreadcrumbItem><Link to='/stafflist'>Nhân Viên</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
                     </Breadcrumb>
-                    {/* <div className="col-12">
-                        <h3>{props.staff.name}</h3>
-                        <hr />
-                    </div> */}
                 </div>
                 <div className="row">
                     <RenderStaff staff={props.staff} />

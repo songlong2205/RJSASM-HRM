@@ -1,5 +1,6 @@
 li{
     margin-left: 5px;
+    margin-bottom: 14px;
 }
 .row-header{
     margin:0px auto;
@@ -37,3 +38,4 @@ address{
 span {
     color: lightgray;
 }
+

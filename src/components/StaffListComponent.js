@@ -25,13 +25,7 @@ const StaffList = (props) => {
 
     return (
         <div className="container-fluid">
-            {/* <h4>Nhân Viên</h4>
-            <hr /> */}
             <div className="row">
-                {/* <Breadcrumb>
-                    <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>Staff List</BreadcrumbItem>
-                </Breadcrumb> */}
                 <div className="col-12">
                     <h3>Nhân Viên</h3>
                     <hr />
@@ -40,10 +34,6 @@ const StaffList = (props) => {
             <div className="row mt-1">
                 {list}
             </div>
-            {/* <StaffInfo staff={this.state.selectedStaff} /> */}
-            {/* <div className="row">
-                        {this.renderStaff(this.state.selectedStaff)}
-                    </div> */}
         </div>
     );
 }

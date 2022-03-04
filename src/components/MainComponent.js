@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Home from './HomeComponent';
 import DeptList from './DeptCompoent';
 import StaffList from './StaffListComponent';
 import StaffInfo from './StaffInfoComponent';
+import Salary from './SalaryComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import '../App.css';
@@ -18,7 +18,6 @@ class Main extends Component {
         this.state = {
             staffs: STAFFS,
             departments: DEPARTMENTS,
-            // selectedStaff: null
         };
     }
 
@@ -45,15 +44,12 @@ class Main extends Component {
             <div>
                 <Header />
                 <Switch>
+                    <Route exact path="/salary" component={() => <Salary staffs={this.state.staffs} />} />
                     <Route path="/departments" component={Department} />
                     <Route exact path="/stafflist" component={() => <StaffList staffs={this.state.staffs} />} />
                     <Route path="/stafflist/:staffId" component={StaffWithId} />
                     <Redirect to="/stafflist" />
                 </Switch>
-                {/* <StaffList staffs={this.state.staffs}
-                    onClick={(staffId) => this.onStaffSelect(staffId)} /> */}
-                {/* <StaffInfo
-                    staff={this.state.staffs.filter((staff) => staff.id === this.state.selectedStaff)[0]} /> */}
                 <Footer />
             </div>
         );

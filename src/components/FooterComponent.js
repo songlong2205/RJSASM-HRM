@@ -6,15 +6,6 @@ function Footer(props) {
         <div className="footer">
             <div className="container">
                 <div className="row">
-                    {/* <div className="col-4 offset-1 col-sm-2">
-                        <h5>Links</h5>
-                        <ul className="list-unstyled">
-                            <li><Link to="/home">Home</Link></li>
-                            <li><Link to="/aboutus">About us</Link></li>
-                            <li><Link to="/stafflist">Staff List</Link></li>
-                            <li><Link to="/contactus">Contact Us</Link></li>
-                        </ul>
-                    </div> */}
                     <div className="col-lg-3 col-sm-5">
                         <h5>Our Address</h5>
                         <address>
