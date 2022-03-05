@@ -1,7 +1,7 @@
 import React from "react";
-import { Card} from 'reactstrap';
+import { Alert, Card} from 'reactstrap';
 
-function RenderStaffInfo({ staff}) {
+function RenderStaffSalary({ staff}) {
     return (
         <Card className="m-2">
             <h2 style={{ textAlign: "left", color: "black" }}>{staff.name}</h2>
@@ -11,7 +11,7 @@ function RenderStaffInfo({ staff}) {
                         <p>Mã nhân viên : {staff.id}</p>
                         <p>Hệ số lương : {staff.salaryScale}</p>
                         <p>Số giờ làm thêm : {staff.overTime}</p>
-                        <p style={{textAlign: "center", background: "lightGrey"}}>Lương : {(staff.salaryScale * 3000000) + (staff.overTime * (200000/8))}</p>
+                        <Alert ><b>Lương : {((staff.salaryScale * 3000000) + (staff.overTime * (200000/8))).toLocaleString("vi")}</b></Alert>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@ const Salary = (props) => {
     const list = props.staffs.map((staff) => {
         return (
             <div key={staff.id} className="col-lg-4 col-md-6 col-12 col-sm-12">
-                <RenderStaffInfo staff={staff} />
+                <RenderStaffSalary staff={staff} />
             </div>
         );
     });

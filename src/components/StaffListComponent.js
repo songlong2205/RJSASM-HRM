@@ -1,9 +1,8 @@
 import React from "react";
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import dateFormat from "dateformat";
+import { Card, CardImg} from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function RenderStaffInfo({ staff, onClick }) {
+function RenderStaffInfo({ staff }) {
     return (
         <Card>
             <Link to={`/stafflist/${staff.id}`}>
