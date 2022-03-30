@@ -19,14 +19,20 @@ class Main extends Component {
             staffs: STAFFS,
             departments: DEPARTMENTS,
         };
+        this.addStaff = this.addStaff.bind(this);
     }
 
-    onStaffSelect(staffId) {
-        this.setState({ selectedStaff: staffId });
-    }
+    addStaff = (staff) => {
+        const id = Math.floor(Math.random() * 10000 +1);
+        const newStaff = { id, ...staff };
+        this.setState ({
+            staffs: [...this.state.staffs, newStaff]
+        });
+        // console.log(newStaff);
+        // console.log(this.state.staffs);
+    };
 
     render() {
-
         const Department = () => {
             return (
                 <DeptList departments={this.state.departments} />
@@ -46,8 +52,8 @@ class Main extends Component {
                 <Switch>
                     <Route exact path="/salary" component={() => <Salary staffs={this.state.staffs} />} />
                     <Route path="/departments" component={Department} />
-                    <Route exact path="/stafflist" component={() => <StaffList staffs={this.state.staffs} />} />
                     <Route path="/stafflist/:staffId" component={StaffWithId} />
+                    <Route path="/staffList" component={() => <StaffList onAdd={this.addStaff} staffs={this.state.staffs} />} />
                     <Redirect to="/stafflist" />
                 </Switch>
                 <Footer />
