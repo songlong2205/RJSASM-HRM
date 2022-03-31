@@ -35,7 +35,7 @@ address{
 .navbar-dark {
     background-color: blue;
 }
-span {
+.header {
     color: lightgray;
 }
 

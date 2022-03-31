@@ -244,7 +244,7 @@ class StaffList extends Component {
                                         show="touched"
                                         messages={{
                                             required: "Vui lòng nhập",
-                                            isNumber: "Phải là chữ số"
+                                            isNumber: "Vui lòng nhập số"
                                         }}
                                     />
                                 </Col>
@@ -268,7 +268,7 @@ class StaffList extends Component {
                                         show="touched"
                                         messages={{
                                             required: "Vui lòng nhập",
-                                            isNumber: "Phải là chữ số"
+                                            isNumber: "Vui lòng nhập số"
                                         }}
                                     />
                                 </Col>
@@ -292,7 +292,7 @@ class StaffList extends Component {
                                         show="touched"
                                         messages={{
                                             required: "Vui lòng nhập",
-                                            isNumber: "Phải là chữ số"
+                                            isNumber: "Vui lòng nhập số"
                                         }}
                                     />
                                 </Col>
