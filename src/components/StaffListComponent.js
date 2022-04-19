@@ -16,6 +16,11 @@ function RenderStaffInfo({ staff }) {
                     <CardImg src={staff.image} />
                     <p style={{ textAlign: "center", color: "black" }}>{staff.name}</p>
                 </Link>
+                <div style={{ textAlign: "center" }} className="col-auto mt-1">
+                    <Button className="btn btn-danger" >
+                        <span>Xóa</span>
+                    </Button>
+                </div>
             </Card>
         </div>
     );
@@ -308,6 +313,7 @@ class StaffList extends Component {
                 <div className="row mt-1 mb-3">
                     {staffList}
                 </div>
+                
             </div>
         );
     }

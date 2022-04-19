@@ -1,17 +1,18 @@
 import React from "react";
 import { Alert, Card} from 'reactstrap';
 
-function RenderStaffSalary({ staff}) {
+function RenderStaffSalary({ salary}) {
     return (
         <Card className="m-2">
-            <h2 style={{ textAlign: "left", color: "black" }}>{staff.name}</h2>
+            <h2 style={{ textAlign: "left", color: "black" }}>{salary.name}</h2>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-6 col-12 col-sm-12">
-                        <p>Mã nhân viên : {staff.id}</p>
-                        <p>Hệ số lương : {staff.salaryScale}</p>
-                        <p>Số giờ làm thêm : {staff.overTime}</p>
-                        <Alert ><b>Lương : {((staff.salaryScale * 3000000) + (staff.overTime * (200000/8))).toLocaleString("vi")}</b></Alert>
+                        <p>Mã nhân viên : {salary.id}</p>
+                        <p>Hệ số lương : {salary.salaryScale}</p>
+                        <p>Số giờ làm thêm : {salary.overTime}</p>
+                        <p>Lương cơ bản : {salary.salary}</p>
+                        <Alert ><b>Lương : {((salary.salaryScale * salary.salary) + (salary.overTime * (200000/8))).toLocaleString("vi")}</b></Alert>
                     </div>
                 </div>
             </div>
@@ -20,10 +21,10 @@ function RenderStaffSalary({ staff}) {
 }
 const Salary = (props) => {
 
-    const list = props.staffs.map((staff) => {
+    const salary = props.salary.map((staffSalary) => {
         return (
-            <div key={staff.id} className="col-lg-4 col-md-6 col-12 col-sm-12">
-                <RenderStaffSalary staff={staff} />
+            <div key={staffSalary.id} className="col-lg-4 col-md-6 col-12 col-sm-12">
+                <RenderStaffSalary salary={staffSalary} />
             </div>
         );
     });
@@ -37,7 +38,7 @@ const Salary = (props) => {
                 </div>
             </div>
             <div className="row mt-1 mb-3">
-                {list}
+                {salary}
             </div>
         </div>
     );

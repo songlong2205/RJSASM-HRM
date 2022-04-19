@@ -2,8 +2,9 @@ import React from "react";
 import { Card, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import dateFormat from "dateformat";
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
-function RenderStaff({ staff }) {
+function RenderStaff({ staff, dept }) {
     return (
         <div className="container m-2">
             <div className="row">
@@ -16,7 +17,7 @@ function RenderStaff({ staff }) {
                     <h4>Họ và tên : {staff.name}</h4>
                     <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
                     <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
-                    <li>Phòng ban : {staff.department.name || staff.department}</li>
+                    <li>Phòng ban : {dept.name}</li>
                     <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
                     <li>Số ngày đã làm thêm : {staff.overTime}</li>
                 </div>
@@ -35,8 +36,15 @@ const StaffInfo = (props) => {
                         <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
                     </Breadcrumb>
                 </div>
+                <div className="col-2 col-auto mt-1">
+                    <Button className="btn btn-success" >
+                        <span>Cập nhật</span>
+                    </Button>
+                </div>
                 <div className="row">
-                    <RenderStaff staff={props.staff} />
+                    <RenderStaff staff={props.staff}
+                        dept={props.dept.filter((depts) => depts.id === props.staff.departmentId)[0]
+                        } />
                 </div>
             </div>
         );
