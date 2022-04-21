@@ -3,23 +3,31 @@ import { Card, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import dateFormat from "dateformat";
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
+import { FadeTransform, Fade } from 'react-animation-components';
 
 function RenderStaff({ staff, dept }) {
     return (
         <div className="container m-2">
             <div className="row">
                 <div className="col-lg-3 col-md-4 col-sm-12">
-                    <Card>
-                        <CardImg src={staff.image} />
-                    </Card>
+                    <FadeTransform in
+                        transformProps={{
+                            exitTransform: 'scale(0.5) translate(-50%)'
+                        }}>
+                        <Card>
+                            <CardImg src={staff.image} />
+                        </Card>
+                    </FadeTransform>
                 </div>
                 <div style={{ margin: "auto" }} className="col-lg-9 col-md-8 col-sm-12">
                     <h4>Họ và tên : {staff.name}</h4>
-                    <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
-                    <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
-                    <li>Phòng ban : {dept.name}</li>
-                    <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
-                    <li>Số ngày đã làm thêm : {staff.overTime}</li>
+                    <Fade in>
+                            <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
+                            <li>Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}</li>
+                            <li>Phòng ban : {dept.name}</li>
+                            <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
+                            <li>Số ngày đã làm thêm : {staff.overTime}</li>
+                    </Fade>
                 </div>
             </div>
         </div>

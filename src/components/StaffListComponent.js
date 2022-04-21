@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Card, CardImg, Form, Modal, ModalBody, ModalHeader, Row, Label, Col, FormFeedback, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { FadeTransform } from 'react-animation-components';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -10,19 +11,24 @@ const isNumber = (val) => !isNaN(Number(val));
 
 function RenderStaffInfo({ staff }) {
     return (
-        <div className="m-1">
-            <Card>
-                <Link to={`/stafflist/${staff.id}`}>
-                    <CardImg src={staff.image} />
-                    <p style={{ textAlign: "center", color: "black" }}>{staff.name}</p>
-                </Link>
-                <div style={{ textAlign: "center" }} className="col-auto mt-1">
-                    <Button className="btn btn-danger" >
-                        <span>Xóa</span>
-                    </Button>
-                </div>
-            </Card>
-        </div>
+        <FadeTransform in
+            transformProps={{
+                exitTransform: 'scale(0.5) translate(-50%)'
+            }}>
+            <div className="m-1">
+                <Card>
+                    <Link to={`/stafflist/${staff.id}`}>
+                        <CardImg src={staff.image} />
+                        <p style={{ textAlign: "center", color: "black" }}>{staff.name}</p>
+                    </Link>
+                    <div style={{ textAlign: "center" }} className="col-auto mt-1">
+                        <Button className="btn btn-danger" >
+                            <span>Xóa</span>
+                        </Button>
+                    </div>
+                </Card>
+            </div>
+        </FadeTransform>
     );
 }
 class StaffList extends Component {
@@ -313,7 +319,7 @@ class StaffList extends Component {
                 <div className="row mt-1 mb-3">
                     {staffList}
                 </div>
-                
+
             </div>
         );
     }

@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import { Card, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { FadeTransform } from 'react-animation-components';
 
 const RenderDept = ({ dept }) => {
     return (
         <div className="container-fluid">
             <div>
+            <FadeTransform in
+            transformProps={{
+                exitTransform: 'scale(0.5) translate(-100%)'
+            }}>
                 <Card className="mt-2">
                     <Link to={`/departments/${dept.id}`}>
                         <CardTitle style={{ textAlign: "left", marginLeft: "20px", marginTop: "10px", color: "black" }}>{dept.name}</CardTitle>
                         <h6 style={{ textAlign: "center", margin: "20px", color: "black" }}>Số lượng nhân viên : {dept.numberOfStaff}</h6>
                     </Link>
                 </Card>
+                </FadeTransform>
             </div>
         </div>
     );
