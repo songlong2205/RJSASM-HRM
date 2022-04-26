@@ -9,7 +9,7 @@ import Footer from './FooterComponent';
 import '../App.css';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addStaff, fetchDepartments, fetchSalary, fetchStaffs } from '../redux/ActionCreators';
+import { addStaff, fetchDepartments, fetchSalary, fetchStaffs, deleteStaff } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -19,12 +19,11 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    // addStaff: (staff) => {
-    //     dispatch(addStaff(staff))
-    // },
+    addStaff: (staff) => { dispatch(addStaff(staff)) },
     fetchStaffs: () => { dispatch(fetchStaffs()) },
     fetchDepartments: () => { dispatch(fetchDepartments()) },
-    fetchSalary: () => { dispatch(fetchSalary()) }
+    fetchSalary: () => { dispatch(fetchSalary()) },
+    deleteStaff: (id) => { dispatch(deleteStaff(id)) }
 
 })
 
@@ -40,7 +39,7 @@ class Main extends Component {
         const Department = () => {
             return (
                 <DeptList dept={this.props.departments.departments}
-                    />
+                />
             );
         }
 
@@ -67,7 +66,10 @@ class Main extends Component {
                     <Route path="/department" component={Department} />
                     <Route path="/departments/:deptId" component={DeptWithId} />
                     <Route path="/stafflist/:staffId" component={StaffWithId} />
-                    <Route path="/staffList" component={() => <StaffList staffsLoading={this.props.staffs.isLoading} onAdd={this.props.addStaff} staffs={this.props.staffs.staffs} />} />
+                    <Route path="/staffList" component={() => <StaffList staffsLoading={this.props.staffs.isLoading}
+                        onAdd={this.props.addStaff}
+                        staffs={this.props.staffs.staffs}
+                        onDeleteStaff={this.props.deleteStaff} />} />
                     <Redirect to="/stafflist" />
                 </Switch>
                 <Footer />

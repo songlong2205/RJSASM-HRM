@@ -1,15 +1,42 @@
 import * as ActionTypes from './ActionTypes.js';
-import { DEPARTMENTS } from '../shared/staffs';
 import { baseUrl } from '../shared/baseUrl.js';
+import fetch from 'cross-fetch';
 
-// export const addStaff = (staff) => {
-//     const id = Math.floor(Math.random() * 10000 + 1);
-//     const newStaff = { id, ...staff };
-//     return ({
-//         type: ActionTypes.ADD_STAFF,
-//         payload: newStaff
-//     })
-// }
+export const addStaffSuccess = (staff) => ({
+    type: ActionTypes.ADD_STAFF_SUCCESS,
+    payload: staff
+});
+
+export const addStaff = (staff) => (dispatch) => {
+    return fetch(baseUrl + 'staffs', {
+        method: 'POST',
+        body: JSON.stringify(staff),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin'
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response;
+            }
+            else {
+                var error = new Error('Error' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+            (error) => {
+                var errmess = new Error(error.messae);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(response => dispatch(addStaffSuccess(response)))
+        .catch(error => {
+            console.log('Add staffs ', error.messae)
+            alert('Staff could not be posted\nError: ' + error.messae);
+        })
+}
 
 export const fetchDepartments = () => (dispatch) => {
     dispatch(departmentsLoading(true));
@@ -76,3 +103,21 @@ export const addStaffs = (staffs) => ({
     type: ActionTypes.ADD_STAFFS,
     payload: staffs
 });
+
+export const deleteStaffSuccess = (id) => ({
+    type: ActionTypes.DELETE_STAFF_SUCCESS,
+    payload: id
+});
+
+export const deleteStaffLoading = () => ({
+    type: ActionTypes.DELETE_STAFF_LOADING,
+});
+
+export const deleteStaff = (id) => (dispatch) => {
+    if (window.confirm('Bạn có muốn xóa không ?')) {
+        return fetch(baseUrl + `staffs/${id}`, {
+            method: 'DELETE',
+        })
+            .then(() => dispatch(deleteStaffSuccess(id)))
+    }
+}

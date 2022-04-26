@@ -9,7 +9,7 @@ const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
 const isNumber = (val) => !isNaN(Number(val));
 
-function RenderStaffInfo({ staff }) {
+function RenderStaffInfo({ staff, onDeleteStaff }) {
     return (
         <FadeTransform in
             transformProps={{
@@ -22,8 +22,8 @@ function RenderStaffInfo({ staff }) {
                         <p style={{ textAlign: "center", color: "black" }}>{staff.name}</p>
                     </Link>
                     <div style={{ textAlign: "center" }} className="col-auto mt-1">
-                        <Button className="btn btn-danger" >
-                            <span>Xóa</span>
+                        <Button className="btn btn-danger" onClick={() => onDeleteStaff(staff.id)}>
+                            Xóa
                         </Button>
                     </div>
                 </Card>
@@ -38,12 +38,10 @@ class StaffList extends Component {
         this.state = {
             doB: "",
             startDate: "",
-            salary: 3000000,
             image: '/assets/images/avatar.png',
             touched: {
                 doB: false,
                 startDate: false,
-                overTime: false
             },
             nameS: "",
             isModalOpen: false,
@@ -76,7 +74,7 @@ class StaffList extends Component {
             name: values.name,
             doB: this.state.doB,
             startDate: this.state.startDate,
-            department: values.department,
+            departmentId: values.departmentId,
             salaryScale: values.salaryScale,
             annualLeave: values.annualLeave,
             overTime: values.overTime,
@@ -126,7 +124,8 @@ class StaffList extends Component {
             .map((val) => {
                 return (
                     <div key={val.id} className="col-lg-2 col-md-4 col-6 col-sm-6">
-                        <RenderStaffInfo staff={val} />
+                        <RenderStaffInfo staff={val}
+                            onDeleteStaff={this.props.onDeleteStaff} />
                     </div>
                 );
             });
@@ -224,16 +223,17 @@ class StaffList extends Component {
                                     Phòng ban:
                                 </Label>
                                 <Col md={8}>
-                                    <Control.select model=".department" id="department" name="department"
+                                    <Control.select model=".departmentId" id="departmentId" name="departmentId"
                                         className="form-control"
-                                        defaultValue="Sale"
+                                        defaultValue="Dept01"
+                                        onChange={(e) => this.handleInputChange(e)}
                                     >
-                                        <option>Sale</option>
-                                        <option>HR</option>
-                                        <option>Marketing</option>
-                                        <option>IT</option>
-                                        <option>Finance</option></Control.select>
-                                    <FormFeedback>{errors.department}</FormFeedback>
+                                        <option value={'Dept01'}>Sale</option>
+                                        <option value={'Dept02'}>HR</option>
+                                        <option value={'Dept03'}>Marketing</option>
+                                        <option value={'Dept04'}>IT</option>
+                                        <option value={'Dept05'}>Finance</option>
+                                    </Control.select>
                                 </Col>
                             </Row>
                             <Row className="control-group">

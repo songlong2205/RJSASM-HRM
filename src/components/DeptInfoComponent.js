@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import StaffList from './StaffListComponent';
 
